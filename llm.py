@@ -16,7 +16,7 @@ chain = create_sql_query_chain(llm, db)
 examples = [
     {
       "natural_language_query": "Give emails of people working in health industry",
-      "sql_query": '''"SELECT "email" FROM people_info
+      "sql_query": '''"SELECT first_name, last_name, email FROM people_info
         JOIN company_info ON people_info.homepage_base_url = company_info.homepage_base_url
         JOIN event_info ON company_info.event_url = event_info.event_url
         WHERE event_info.mapped_industry ILIKE '%health%';
@@ -24,7 +24,7 @@ examples = [
     },
     {
       "natural_language_query": "Give email of people working in finance industry",
-      "sql_query": '''"SELECT "email" FROM people_info
+      "sql_query": '''"SELECT first_name, last_name, email FROM people_info
         JOIN company_info ON people_info.homepage_base_url = company_info.homepage_base_url
         WHERE company_info.mapped_industry ILIKE '%finance%';
       '''
